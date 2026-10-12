@@ -24,3 +24,10 @@ Cohen-Sutherland is the standard answer when you need to clip many line segments
 ## Edge cases worth knowing
 
 The rectangle is the **closed** region `[xmin, xmax] × [ymin, ymax]`: points on the boundary are inside, so a segment lying along an edge is returned as-is rather than trimmed away. Degenerate zero-length segments are handled explicitly before the main loop, because the algorithm's slope computation would otherwise be undefined for `dx = dy = 0`. Vertical and horizontal segments use a sentinel infinite slope so the standard intersection formulas don't divide by zero.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
