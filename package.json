@@ -1,6 +1,6 @@
 {
   "name": "cohen-sutherland-line-clipping",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Computes the visible portion of a line segment against an axis-aligned rectangular boundary using outcode region encoding.",
   "type": "module",
   "main": "src/index.js",
